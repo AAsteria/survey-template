@@ -1,0 +1,16 @@
+{
+  "name": "dian du ji -survey-backend",
+  "version": "1.0.0",
+  "description": "点读机体验问卷 API — MongoDB + Express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5"
+  }
+}
