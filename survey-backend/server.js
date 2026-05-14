@@ -204,10 +204,15 @@ app.post("/api/auth", (req, res) => {
   res.status(401).json({ error: "密钥错误" });
 });
 
-// ── Start ──────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// ── Start / Export ─────────────────────────────────────────
+// Vercel serverless 需要导出 app；本地直接 listen
+if (process.env.VERCEL) {
+  module.exports = app;
+} else {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
 
 // ── Helpers ────────────────────────────────────────────────
 function csvEscape(str) {
