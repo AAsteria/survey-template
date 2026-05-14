@@ -79,6 +79,10 @@ body {
 .header-card .desc { font-size: 14px; color: var(--text-secondary); line-height: 1.7; }
 .header-card .desc ul { padding-left: 18px; margin: 4px 0; }
 .header-card .desc ul li { margin-bottom: 2px; }
+.header-card .desc ol { padding-left: 18px; margin: 4px 0; }
+.header-card .desc ol li { margin-bottom: 4px; }
+.hl-task { color: #e67e22; font-weight: 500; }
+.hl-sus { color: #2980b9; font-weight: 500; }
 
 /* ── Section Card ── */
 .section {
@@ -317,13 +321,14 @@ body {
 <div class="header-card">
   <h1>点读机 — 用户自助体验问卷</h1>
   <div class="desc">
-    <p style="margin-bottom:6px;">感谢你参与点读机的内测体验！请按照下方任务指引，<b>逐个完成任务并即时填写对应部分</b>。</p>
-    <ul>
-      <li>准备一份课程 PDF（5-10 页，包含文字段落、图表、流程类内容为佳）</li>
-      <li>每个任务完成后<b>立刻</b>打分和记录感受，不要等全部做完再回头填</li>
-      <li><b>如实填写</b>——你遇到的任何困难都是产品的问题，不是你的问题</li>
-    </ul>
-    <p style="margin-top:6px;">预计耗时：20-30 分钟 ｜ 可选：如能录制屏幕操作过程，提交时一并附上效果更佳。</p>
+    <p style="margin-bottom:6px;">阅读或学习大学课程资料时，可随时选取想要扩展或有疑惑的内容，使用"AI点读"功能基于文件上下文生成丰富的多模态教学辅导内容。请你依照以下测试流程进行测试体验：</p>
+    <ol>
+      <li>根据<span class="hl-task">测试任务及体验记录</span>表格内容指引，完成每个测试后记录下对应任务的体验反馈；</li>
+      <li>在完成所有测试任务后，根据体验感受填写<span class="hl-sus">系统整体可用性报告问卷</span>；</li>
+      <li>记录其他体验反馈与建议（可选）</li>
+    </ol>
+    <p style="margin-top:8px;">Demo 链接：<a href="https://demo001-546232442092.asia-northeast1.run.app" target="_blank">https://demo001-546232442092.asia-northeast1.run.app</a></p>
+    <p style="margin-top:4px; font-size:12px; color: var(--text-placeholder);">由于早期版本使用的是 Google Gemini AI 模型，所以仅支持在墙后的网络环境中体验。</p>
   </div>
 </div>
 
@@ -364,7 +369,7 @@ body {
 
 <!-- ==================== Task 1 ==================== -->
 <div class="section" data-section="task1">
-  <div class="section-title"><span class="section-num">1</span>划词选中 — 多维解释</div>
+  <div class="section-title"><span class="section-num">1</span>任务一</div>
   <div class="section-subtitle">任务一</div>
 
   <div class="scenario">
@@ -382,29 +387,14 @@ body {
   </div>
 
   <div class="form-group">
-    <label class="form-label">1.2 操作回顾 <span class="form-sublabel">（简单回忆操作步骤：先上传PDF→划词→看到什么→点击什么→……）</span></label>
-    <textarea class="textarea" name="t1_path" placeholder="请描述你的操作步骤……" data-field="t1_path"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">1.3 体验自查 — 卡点 <span class="form-sublabel">（有没有在哪一步停下来、不知道点哪里、或者反复尝试？）</span></label>
-    <textarea class="textarea" name="t1_stuck" placeholder="请描述你遇到的卡点……" data-field="t1_stuck"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">1.3 体验自查 — 困惑/误解 <span class="form-sublabel">（有没有让你困惑的地方？把某个按钮理解成了别的意思？）</span></label>
-    <textarea class="textarea" name="t1_confusion" placeholder="请描述让你困惑的地方……" data-field="t1_confusion"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">1.3 体验自查 — 惊喜 <span class="form-sublabel">（有没有让你觉得"诶，这个不错"、超出预期的？）</span></label>
-    <textarea class="textarea" name="t1_delight" placeholder="请描述让你惊喜的体验……" data-field="t1_delight"></textarea>
+    <label class="form-label">体验自查 <span class="form-sublabel">（可选）请描述你在操作过程中遇到的卡点、困惑、惊喜或其他任何体验感受</span></label>
+    <textarea class="textarea" name="t1_experience" placeholder="请自由描述你的体验感受……" data-field="t1_experience"></textarea>
   </div>
 
   <hr class="divider">
 
   <div class="form-group">
-    <label class="form-label">1.4 评分 <span class="required">*</span></label>
+    <label class="form-label">评分 <span class="required">*</span></label>
     <div class="matrix-wrap">
       <table class="matrix" data-matrix="t1_rating">
         <thead>
@@ -441,14 +431,14 @@ body {
   </div>
 
   <div class="form-group">
-    <label class="form-label">1.5 额外想说的</label>
+    <label class="form-label">额外想说的</label>
     <textarea class="textarea" name="t1_extra" placeholder="任何其他想告诉我们的反馈……" data-field="t1_extra"></textarea>
   </div>
 </div>
 
 <!-- ==================== Task 2 ==================== -->
 <div class="section" data-section="task2">
-  <div class="section-title"><span class="section-num">2</span>框选文字/图片 — 交互示例</div>
+  <div class="section-title"><span class="section-num">2</span>任务二</div>
   <div class="section-subtitle">任务二</div>
 
   <div class="scenario">
@@ -466,29 +456,14 @@ body {
   </div>
 
   <div class="form-group">
-    <label class="form-label">2.2 操作回顾</label>
-    <textarea class="textarea" name="t2_path" placeholder="请描述你的操作步骤……" data-field="t2_path"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">2.3 体验自查 — 卡点</label>
-    <textarea class="textarea" name="t2_stuck" placeholder="有没有在哪一步停下来、不知道点哪里？" data-field="t2_stuck"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">2.3 体验自查 — 困惑/误解 <span class="form-sublabel">（"pin 到推荐列表"这个操作你理解了吗？）</span></label>
-    <textarea class="textarea" name="t2_confusion" placeholder="有什么让你困惑或理解错的地方？" data-field="t2_confusion"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">2.3 体验自查 — 惊喜</label>
-    <textarea class="textarea" name="t2_delight" placeholder="有没有让你觉得"诶这个不错"的地方？" data-field="t2_delight"></textarea>
+    <label class="form-label">体验自查 <span class="form-sublabel">（可选）请描述你在操作过程中遇到的卡点、困惑、惊喜或其他任何体验感受</span></label>
+    <textarea class="textarea" name="t2_experience" placeholder="请自由描述你的体验感受……" data-field="t2_experience"></textarea>
   </div>
 
   <hr class="divider">
 
   <div class="form-group">
-    <label class="form-label">2.4 评分 <span class="required">*</span></label>
+    <label class="form-label">评分 <span class="required">*</span></label>
     <div class="matrix-wrap">
       <table class="matrix" data-matrix="t2_rating">
         <thead>
@@ -525,14 +500,14 @@ body {
   </div>
 
   <div class="form-group">
-    <label class="form-label">2.5 额外想说的</label>
+    <label class="form-label">额外想说的</label>
     <textarea class="textarea" name="t2_extra" placeholder="任何其他想告诉我们的反馈……" data-field="t2_extra"></textarea>
   </div>
 </div>
 
 <!-- ==================== Task 3 ==================== -->
 <div class="section" data-section="task3">
-  <div class="section-title"><span class="section-num">3</span>框选段落 — 流程展开</div>
+  <div class="section-title"><span class="section-num">3</span>任务三</div>
   <div class="section-subtitle">任务三</div>
 
   <div class="scenario">
@@ -550,29 +525,14 @@ body {
   </div>
 
   <div class="form-group">
-    <label class="form-label">3.2 操作回顾</label>
-    <textarea class="textarea" name="t3_path" placeholder="请描述你的操作步骤……" data-field="t3_path"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">3.3 体验自查 — 卡点 <span class="form-sublabel">（"取消 pin"这个操作顺利吗？）</span></label>
-    <textarea class="textarea" name="t3_stuck" placeholder="有没有在哪一步停下来、反复尝试？" data-field="t3_stuck"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">3.3 体验自查 — 困惑/误解 <span class="form-sublabel">（流程展开的输出内容符合你的理解吗？）</span></label>
-    <textarea class="textarea" name="t3_confusion" placeholder="有什么让你困惑或理解错的地方？" data-field="t3_confusion"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">3.3 体验自查 — 惊喜</label>
-    <textarea class="textarea" name="t3_delight" placeholder="有没有让你惊喜的地方？" data-field="t3_delight"></textarea>
+    <label class="form-label">体验自查 <span class="form-sublabel">（可选）请描述你在操作过程中遇到的卡点、困惑、惊喜或其他任何体验感受</span></label>
+    <textarea class="textarea" name="t3_experience" placeholder="请自由描述你的体验感受……" data-field="t3_experience"></textarea>
   </div>
 
   <hr class="divider">
 
   <div class="form-group">
-    <label class="form-label">3.4 评分 <span class="required">*</span></label>
+    <label class="form-label">评分 <span class="required">*</span></label>
     <div class="matrix-wrap">
       <table class="matrix" data-matrix="t3_rating">
         <thead>
@@ -609,14 +569,14 @@ body {
   </div>
 
   <div class="form-group">
-    <label class="form-label">3.5 额外想说的</label>
+    <label class="form-label">额外想说的</label>
     <textarea class="textarea" name="t3_extra" placeholder="任何其他想告诉我们的反馈……" data-field="t3_extra"></textarea>
   </div>
 </div>
 
 <!-- ==================== Task 4 ==================== -->
 <div class="section" data-section="task4">
-  <div class="section-title"><span class="section-num">4</span>高亮本页重点 + 继续点读</div>
+  <div class="section-title"><span class="section-num">4</span>任务四</div>
   <div class="section-subtitle">任务四</div>
 
   <div class="scenario">
@@ -634,29 +594,14 @@ body {
   </div>
 
   <div class="form-group">
-    <label class="form-label">4.2 操作回顾 <span class="form-sublabel">（高亮结果出来后你做了什么？点击重点后发生了什么？）</span></label>
-    <textarea class="textarea" name="t4_path" placeholder="请描述你的操作步骤……" data-field="t4_path"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">4.3 体验自查 — 卡点</label>
-    <textarea class="textarea" name="t4_stuck" placeholder="有没有在哪一步停下来、不知道点哪里？" data-field="t4_stuck"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">4.3 体验自查 — 困惑/误解 <span class="form-sublabel">（高亮标记出来的内容符合你对"本页重点"的预期吗？）</span></label>
-    <textarea class="textarea" name="t4_confusion" placeholder="有什么让你困惑的地方？" data-field="t4_confusion"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">4.3 体验自查 — 惊喜</label>
-    <textarea class="textarea" name="t4_delight" placeholder="有没有让你惊喜的地方？" data-field="t4_delight"></textarea>
+    <label class="form-label">体验自查 <span class="form-sublabel">（可选）请描述你在操作过程中遇到的卡点、困惑、惊喜或其他任何体验感受</span></label>
+    <textarea class="textarea" name="t4_experience" placeholder="请自由描述你的体验感受……" data-field="t4_experience"></textarea>
   </div>
 
   <hr class="divider">
 
   <div class="form-group">
-    <label class="form-label">4.4 评分 <span class="required">*</span></label>
+    <label class="form-label">评分 <span class="required">*</span></label>
     <div class="matrix-wrap">
       <table class="matrix" data-matrix="t4_rating">
         <thead>
@@ -693,14 +638,14 @@ body {
   </div>
 
   <div class="form-group">
-    <label class="form-label">4.5 额外想说的</label>
+    <label class="form-label">额外想说的</label>
     <textarea class="textarea" name="t4_extra" placeholder="任何其他想告诉我们的反馈……" data-field="t4_extra"></textarea>
   </div>
 </div>
 
 <!-- ==================== Task 5 ==================== -->
 <div class="section" data-section="task5">
-  <div class="section-title"><span class="section-num">5</span>查看点读记录</div>
+  <div class="section-title"><span class="section-num">5</span>任务五</div>
   <div class="section-subtitle">任务五</div>
 
   <div class="scenario">
@@ -718,29 +663,14 @@ body {
   </div>
 
   <div class="form-group">
-    <label class="form-label">5.2 操作回顾 <span class="form-sublabel">（你是从哪里找到点读记录入口的？花了多久？）</span></label>
-    <textarea class="textarea" name="t5_path" placeholder="请描述你的操作步骤……" data-field="t5_path"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">5.3 体验自查 — 卡点 <span class="form-sublabel">（找到"点读记录"入口花了多久？）</span></label>
-    <textarea class="textarea" name="t5_stuck" placeholder="有没有在哪一步停下来、反复找？" data-field="t5_stuck"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">5.3 体验自查 — 困惑/误解 <span class="form-sublabel">（点读记录里的内容符合预期吗？有没有遗漏之前的操作？）</span></label>
-    <textarea class="textarea" name="t5_confusion" placeholder="有什么让你困惑的地方？" data-field="t5_confusion"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">5.3 体验自查 — 惊喜</label>
-    <textarea class="textarea" name="t5_delight" placeholder="有没有让你惊喜的地方？" data-field="t5_delight"></textarea>
+    <label class="form-label">体验自查 <span class="form-sublabel">（可选）请描述你在操作过程中遇到的卡点、困惑、惊喜或其他任何体验感受</span></label>
+    <textarea class="textarea" name="t5_experience" placeholder="请自由描述你的体验感受……" data-field="t5_experience"></textarea>
   </div>
 
   <hr class="divider">
 
   <div class="form-group">
-    <label class="form-label">5.4 评分 <span class="required">*</span></label>
+    <label class="form-label">评分 <span class="required">*</span></label>
     <div class="matrix-wrap">
       <table class="matrix" data-matrix="t5_rating">
         <thead>
@@ -777,14 +707,14 @@ body {
   </div>
 
   <div class="form-group">
-    <label class="form-label">5.5 额外想说的</label>
+    <label class="form-label">额外想说的</label>
     <textarea class="textarea" name="t5_extra" placeholder="任何其他想告诉我们的反馈……" data-field="t5_extra"></textarea>
   </div>
 </div>
 
 <!-- ==================== Task 6 ==================== -->
 <div class="section" data-section="task6">
-  <div class="section-title"><span class="section-num">6</span>综合自由体验</div>
+  <div class="section-title"><span class="section-num">6</span>任务六</div>
   <div class="section-subtitle">任务六</div>
 
   <div class="scenario">
@@ -808,29 +738,14 @@ body {
   </div>
 
   <div class="form-group">
-    <label class="form-label">6.2 整体流程感受</label>
-    <textarea class="textarea" name="t6_feel" placeholder="这次没有分步指引，完全靠你自己摸索。请描述整体感受……" data-field="t6_feel"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">6.3 流畅度自查 — 卡点</label>
-    <textarea class="textarea" name="t6_stuck" placeholder="哪些环节让你卡住了、不知道怎么继续？" data-field="t6_stuck"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">6.3 流畅度自查 — 绕路 <span class="form-sublabel">（有没有本来想点 A，结果点了 B，绕了一圈？）</span></label>
-    <textarea class="textarea" name="t6_detour" placeholder="请描述你"走弯路"的经历……" data-field="t6_detour"></textarea>
-  </div>
-
-  <div class="form-group">
-    <label class="form-label">6.3 流畅度自查 — 缺失 <span class="form-sublabel">（有没有哪个功能或操作你想用但找不到？）</span></label>
-    <textarea class="textarea" name="t6_missing" placeholder="请描述你想用但找不到的功能……" data-field="t6_missing"></textarea>
+    <label class="form-label">流畅度自查 <span class="form-sublabel">（可选）请描述你在自由操作过程中遇到的卡点、绕路、功能缺失或其他任何体验感受</span></label>
+    <textarea class="textarea" name="t6_experience" placeholder="请自由描述你的体验感受……" data-field="t6_experience"></textarea>
   </div>
 
   <hr class="divider">
 
   <div class="form-group">
-    <label class="form-label">6.4 评分 <span class="required">*</span></label>
+    <label class="form-label">评分 <span class="required">*</span></label>
     <div class="matrix-wrap">
       <table class="matrix" data-matrix="t6_rating">
         <thead>
@@ -867,7 +782,7 @@ body {
   </div>
 
   <div class="form-group">
-    <label class="form-label">6.5 额外想说的</label>
+    <label class="form-label">额外想说的</label>
     <textarea class="textarea" name="t6_extra" placeholder="任何其他想告诉我们的反馈……" data-field="t6_extra"></textarea>
   </div>
 </div>

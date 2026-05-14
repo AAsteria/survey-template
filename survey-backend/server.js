@@ -24,7 +24,7 @@ async function connectDB() {
   if (cached.conn) return cached.conn;
   if (!cached.promise) {
     cached.promise = mongoose
-      .connect(MONGODB_URI, { bufferCommands: true })
+      .connect(MONGODB_URI)
       .then((m) => {
         console.log("MongoDB connected (serverless)");
         return m;
@@ -91,7 +91,7 @@ app.post("/api/submissions", async (req, res) => {
     res.status(201).json({ id: doc._id, message: "提交成功，感谢你的反馈！" });
   } catch (err) {
     console.error("POST /api/submissions error:", err);
-    res.status(500).json({ error: "服务器错误，请稍后重试" });
+    res.status(500).json({ error: "服务器错误: " + (err.message || err) });
   }
 });
 
