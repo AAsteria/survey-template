@@ -319,7 +319,7 @@ body {
 
 <!-- ==================== Header ==================== -->
 <div class="header-card">
-  <h1>点读机 — 用户自助体验问卷</h1>
+  <h1>点读机 — 自助体验问卷</h1>
   <div class="desc">
     <p style="margin-bottom:6px;">阅读或学习大学课程资料时，可随时选取想要扩展或有疑惑的内容，使用"AI点读"功能基于文件上下文生成丰富的多模态教学辅导内容。请你依照以下测试流程进行测试体验：</p>
     <ol>
@@ -721,8 +721,8 @@ body {
 
 <!-- ==================== SUS ==================== -->
 <div class="section" data-section="sus">
-  <div class="section-title">整体评价（SUS 系统可用性量表）</div>
-  <div class="section-subtitle">以下问题请根据你对<b>点读机的整体印象</b>来回答。不用想太多，凭第一感觉选。<span class="required">*</span>全部为必填</div>
+  <div class="section-title">整体评价（SUS 系统可用性量表）<span class="required">*</span></div>
+  <div class="section-subtitle">以下问题请根据你对<b>点读机的整体印象</b>来回答。不用想太多，凭第一感觉选。</div>
 
   <div class="required-hint" id="susHint">请完成以下所有评分项</div>
 
@@ -971,7 +971,6 @@ function validateAll() {
   const requiredText = [
     { sel: '[data-field="name"]', msg: '请填写称呼/昵称' },
     { sel: '[data-field="date"]', msg: '请选择填写日期' },
-    { sel: '[data-field="overall_suggestion"]', msg: '请填写改进建议' },
   ];
   requiredText.forEach(item => {
     const el = document.querySelector(item.sel);
@@ -1020,7 +1019,7 @@ function updateProgress() {
   });
 
   // count required text
-  const requiredTextFields = ['name', 'date', 'overall_suggestion'];
+  const requiredTextFields = ['name', 'date'];
   requiredTextFields.forEach(f => {
     total++;
     const el = document.querySelector(`[data-field="${f}"]`);
