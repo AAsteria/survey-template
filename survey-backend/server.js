@@ -16,14 +16,31 @@ app.use(express.json({ limit: "1mb" }));
 // 托管前端静态文件（同源部署，无需额外 Web 服务器）
 app.use(express.static(require("path").join(__dirname, "frontend")));
 
-// ── MongoDB ────────────────────────────────────────────────
-mongoose
-  .connect(MONGODB_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => {
-    console.error("MongoDB connection error:", err.message);
-    process.exit(1);
-  });
+// ── MongoDB (serverless-safe, with connection caching) ──────
+let cached = global.mongoose;
+if (!cached) cached = global.mongoose = { conn: null, promise: null };
+
+async function connectDB() {
+  if (cached.conn) return cached.conn;
+  if (!cached.promise) {
+    cached.promise = mongoose
+      .connect(MONGODB_URI, { bufferCommands: true })
+      .then((m) => {
+        console.log("MongoDB connected (serverless)");
+        return m;
+      })
+      .catch((err) => {
+        console.error("MongoDB connection error:", err.message);
+        cached.promise = null; // allow retry on next invocation
+        throw err;
+      });
+  }
+  cached.conn = await cached.promise;
+  return cached.conn;
+}
+
+// Warm the connection at module load (non-blocking, won't crash on failure)
+connectDB().catch(() => {});
 
 // ── Schema ─────────────────────────────────────────────────
 const submissionSchema = new mongoose.Schema(
@@ -54,6 +71,7 @@ function requireAuth(req, res, next) {
 // 提交问卷（无需鉴权）
 app.post("/api/submissions", async (req, res) => {
   try {
+    await connectDB();
     const { name, date, device, familiarity, overall_willingness, ...fields } =
       req.body;
 
